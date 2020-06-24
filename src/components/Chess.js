@@ -21,19 +21,18 @@ const hasBlackPeice = (i, rowSize) => {
   }
 };
 
-const renderTile = (i, total) => {
+const renderTile = (i, total, shape) => {
   const rowSize = Math.sqrt(total);
   const x = i % rowSize;
   const y = Math.floor(i / rowSize);
   const black = (x + y) % 2 === 1;
 
   const redPiece = hasRedPeice(i, rowSize) ? (
-    // <p style={{ color: "red" }}>red </p>
-    <Piece color="red"></Piece>
+    <Piece color="red" shape={shape}></Piece>
   ) : null;
 
   const blackPiece = hasBlackPeice(i, rowSize) ? (
-    <Piece color="yellow"></Piece>
+    <Piece color="yellow" shape={shape}></Piece>
   ) : null;
   return (
     <div key={i}>
@@ -47,9 +46,9 @@ const renderTile = (i, total) => {
 export default function Chess(props) {
   const tiles = [];
   const total = props.number * props.number;
-
+  const shape = props.shape;
   for (let i = 0; i < total; i++) {
-    tiles.push(renderTile(i, total));
+    tiles.push(renderTile(i, total, shape));
   }
   return (
     <div
