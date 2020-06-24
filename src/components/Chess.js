@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from "./Tile";
+import Piece from "./Piece";
 
 const hasRedPeice = (i, rowSize) => {
   if (i >= 0 && i <= rowSize * 2 - 1) {
@@ -27,11 +28,12 @@ const renderTile = (i, total) => {
   const black = (x + y) % 2 === 1;
 
   const redPiece = hasRedPeice(i, rowSize) ? (
-    <p style={{ color: "red" }}>red </p>
+    // <p style={{ color: "red" }}>red </p>
+    <Piece color="red"></Piece>
   ) : null;
 
   const blackPiece = hasBlackPeice(i, rowSize) ? (
-    <p style={{ color: "yellow" }}>black </p>
+    <Piece color="yellow"></Piece>
   ) : null;
   return (
     <div key={i}>
